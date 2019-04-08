@@ -12,6 +12,10 @@ body {
     margin-top: 5px;
 }
 
+span {
+    float: right;
+}
+
 h1 {
     font-family: 'Righteous', cursive;
 }
