@@ -8,16 +8,17 @@ const config = {
     messagingSenderId: "154322965757"
 };
 firebase.initializeApp(config);
-
 const db = firebase.database();
 
-let trainName = "";
-let destination = "";
+// Initialize Variables
+let name = "";
+let dest = "";
 let startTime = "";
-let frequency = 0;
+let freq = 0;
 
+// function to get current time
 function currentTime() {
-    let current = moment().format('LT');
+    let current = moment().format('LTS');
     $("#currentTime").html(current);
     setTimeout(currentTime, 1000);
 };
@@ -29,5 +30,5 @@ function currentTime() {
 
 
 // Need function for submit button
-
+currentTime();
 
