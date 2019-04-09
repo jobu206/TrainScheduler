@@ -56,14 +56,15 @@ $("#add-train").on("click", function (event) {
 database.ref().on("child_added", function (snapshot) {
     let minsAway;
     // First Time (pushed back 1 year to make sure it comes before current time)
-    let firstTrain = moment(firstTime, "HH:mm").subtract(1, "years");
+    let firstNewTrain = moment(snapshot.val().firstTrain, "HH:mm").subtract(1, "years");
     // Difference between the current and firstTrain
-    let 
+    let diffTime = moment().diff(moment(firstNewTrain), "minutes");
+    // Minutes until next train
+    let tRemainder = diffTime % tFrequency;
 });
 
 
 
-// Minutes until next train
 
 // Next train time
 
