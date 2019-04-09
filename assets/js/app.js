@@ -22,10 +22,10 @@ firebase.initializeApp(config);
 const database = firebase.database();
 
 // Initialize Variables
-var trainName = "";
-var trainDest = "";
-var firstTrainTime = "";
-var trainFreq = 0;
+let trainName = "";
+let trainDest = "";
+let firstTrainTime = "";
+let trainFreq = 0;
 
 // function to get current time
 function currentTime() {
