@@ -9,11 +9,10 @@ body {
 .jumbotron {
     background-color: #303030;
     color: #fff;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 p {
-    /* float: right; */
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     font-weight: 650;
@@ -41,10 +40,7 @@ h3 {
 }
 
 .card {
-    border-color: #303030
-}
-
-.newTrain {
+    border-color: #303030;
     margin-bottom: 10px;
 }
 
