@@ -22,10 +22,10 @@ firebase.initializeApp(config);
 const database = firebase.database();
 
 // Initialize Variables
-let trainName = "";
-let trainDest = "";
-let firstTrainTime = "";
-let trainFreq = 0;
+var trainName = "";
+var trainDest = "";
+var firstTrainTime = "";
+var trainFreq = 0;
 
 // function to get current time
 function currentTime() {
@@ -38,16 +38,16 @@ function currentTime() {
 $("#add-train").on("click", function (event) {
     event.preventDefault();
     // Grab values from text boxes
-    trainName = $("#tn-input").val().trim();
-    trainDest = $("#dest-input").val().trim();
-    firstTrainTime = $("#ft-input").val().trim();
-    trainFreq = parseInt($("#freq-input")).val().trim();
+    trainName = $("#trainName-input").val().trim();
+    trainDest = $("#trainDest-input").val().trim();
+    firstTrainTime = $("#firstTrain-input").val().trim();
+    trainFreq = parseInt($("#trainFreq-input").val().trim());
     // Push to the DB
     database.ref().push()({
-        trainName = trainName,
-        trainDest = trainDest,
-        firstTrainTime = firstTrainTime,
-        trainFreq = trainFreq,
+        trainName: trainName,
+        trainDest: trainDest,
+        firstTrainTime: firstTrainTime,
+        trainFreq: trainFreq,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 });
@@ -55,7 +55,7 @@ $("#add-train").on("click", function (event) {
 // child snapshot function.
 database.ref().on("child_added", function (snapshot) {
     // First Time (pushed back 1 year to make sure it comes before current time)
-    let firstNewTrain = moment(snapshot.val().firstTrain, "HH:mm").subtract(1, "years");
+    let firstNewTrain = moment(snapshot.val().firstTrainTime, "HH:mm").subtract(1, "years");
     // Difference between the current and firstTrain
     let diffTime = moment().diff(moment(firstNewTrain), "minutes");
     // Time apart
@@ -68,7 +68,13 @@ database.ref().on("child_added", function (snapshot) {
 });
 
 // change HTML
-
+database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
+    // Change the HTML to reflect
+    $("#trainName-input").text(snapshot.val().trainName);
+    $("#trainDest-input").text(snapshot.val().trainDest);
+    $("#firstTrain-input").text(snapshot.val().firstTrainTime);
+    $("#trainFreq-input").text(snapshot.val().trainFreq);
+});
 
 // call back for current time function.
 currentTime();
