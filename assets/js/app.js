@@ -13,8 +13,8 @@ const db = firebase.database();
 // Initialize Variables
 let name = "";
 let dest = "";
-let startTime = "";
-let freq = 0;
+let firstTrain = "";
+var freq = 0;
 
 // function to get current time
 function currentTime() {
@@ -23,11 +23,24 @@ function currentTime() {
     setTimeout(currentTime, 1000);
 };
 
-// Need function to pull out values from input fields
+// A variable to reference the database.
+$("#train-submit-btn").on("click", function(event) {
+    event.preventDefault();
+    // Grab user input
+    name = $("#train-name-input").val().trim();
+    dest = $("#destination-input").val().trim();
+    firstTrain = $("firstTrain-input").val().trim();
+    freq = $("frequency-input").val().trim();
+});
 
 
-// Need function to save in db
+// Pushing to database
 
+
+// Make train come first so 
+// Handle the errors
+
+// Change the HTML to reflect
 
 // Need function for submit button
 currentTime();

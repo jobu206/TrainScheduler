@@ -12,27 +12,36 @@ body {
     margin-top: 5px;
 }
 
-span {
-    float: right;
+p {
+    /* float: right; */
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    font-weight: 650;
+    letter-spacing: 2px;
 }
 
 h1 {
     font-family: 'Righteous', cursive;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 h3 {
     font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 2px;
 }
 
 .card-header {
-    background-color: #505050;
+    background-color: #303030;
     color: #fff;
     font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
     font-size: 18px;
+    letter-spacing: 2px;
 }
 
 .card {
-    border-color: #505050
+    border-color: #303030
 }
 
 .newTrain {
