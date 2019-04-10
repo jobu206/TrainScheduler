@@ -46,8 +46,8 @@ $("#add-train").on("click", function (event) {
     database.ref().push({
         trainName: trainName,
         trainDest: trainDest,
-        firstTrainTime: firstTrainTime,
         trainFreq: trainFreq,
+        firstTrainTime: firstTrainTime,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 });
@@ -72,10 +72,19 @@ database.ref().on("child_added", function (snapshot) {
 // change HTML
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
     // Change the HTML to reflect
-    $("#trainName").text(snapshot.val().trainName);
-    $("#trainDest").text(snapshot.val().trainDest);
-    $("#firstTrain").text(snapshot.val().firstTrainTime);
-    $("#trainFreq").text(snapshot.val().trainFreq);
+    let tRow = $("<tr>");
+    tRow.append("<td>" + snapshot.val().trainName + "</td>");
+    tRow.append("<td>" + snapshot.val().trainDest + "</td>");
+    tRow.append("<td>" + snapshot.val().trainFreq + "</td>");
+    tRow.append("<td>" + snapshot.val().firstTrainTime + "</td>");
+    tRow.append("<td>" + snapshot.val().nextTrain + "</td>");
+    $("#train-table-rows").append(tRow);
+    // console.log(trainFreq);
+    
+    // $("#trainName").append(snapshot.val().trainName);
+    // $("#trainDest").append(snapshot.val().trainDest);
+    // $("#firstTrain").append(snapshot.val().firstTrainTime);
+    // $("#trainFreq").append(snapshot.val().trainFreq);
 });
 
 // call back for current time function.
