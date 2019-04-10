@@ -43,7 +43,7 @@ $("#add-train").on("click", function (event) {
     firstTrainTime = $("#firstTrain-input").val().trim();
     trainFreq = parseInt($("#trainFreq-input").val().trim());
     // Push to the DB
-    database.ref().push()({
+    database.ref().push({
         trainName: trainName,
         trainDest: trainDest,
         firstTrainTime: firstTrainTime,
@@ -65,15 +65,17 @@ database.ref().on("child_added", function (snapshot) {
     // Next Train
     let nextTrain = moment().add(minsAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm");
+    console.log(nextTrain);
+    
 });
 
 // change HTML
 database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (snapshot) {
     // Change the HTML to reflect
-    $("#trainName-input").text(snapshot.val().trainName);
-    $("#trainDest-input").text(snapshot.val().trainDest);
-    $("#firstTrain-input").text(snapshot.val().firstTrainTime);
-    $("#trainFreq-input").text(snapshot.val().trainFreq);
+    $("#trainName").text(snapshot.val().trainName);
+    $("#trainDest").text(snapshot.val().trainDest);
+    $("#firstTrain").text(snapshot.val().firstTrainTime);
+    $("#trainFreq").text(snapshot.val().trainFreq);
 });
 
 // call back for current time function.
