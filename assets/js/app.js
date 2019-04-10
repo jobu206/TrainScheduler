@@ -63,8 +63,8 @@ database.ref().on("child_added", function (snapshot) {
     // Minutes until Train
     let minsAway = trainFreq - tRemainder;
     // Next Train
-    let nextTrain = moment().add(minsAway, "minutes");
-    nextTrain = moment(nextTrain).format("hh:mm");
+    let nextTrain = moment().add(minsAway, "minutes").format("hh:mm");
+    // nextTrain = moment(nextTrain).format("hh:mm");
     // console.log(nextTrain);
     
 });
