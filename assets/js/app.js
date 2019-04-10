@@ -61,11 +61,11 @@ database.ref().on("child_added", function (snapshot) {
     // Time apart
     let tRemainder = diffTime % trainFreq;
     // Minutes until Train
-    let minsAway = trainFreq - tRemainder
+    let minsAway = trainFreq - tRemainder;
     // Next Train
     let nextTrain = moment().add(minsAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm");
-    console.log(nextTrain);
+    // console.log(nextTrain);
     
 });
 
@@ -78,8 +78,8 @@ database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functi
     tRow.append("<td>" + snapshot.val().trainFreq + "</td>");
     tRow.append("<td>" + snapshot.val().firstTrainTime + "</td>");
     tRow.append("<td>" + snapshot.val().nextTrain + "</td>");
+    // console.log(nextTrain);
     $("#train-table-rows").append(tRow);
-    // console.log(trainFreq);
     
     // $("#trainName").append(snapshot.val().trainName);
     // $("#trainDest").append(snapshot.val().trainDest);
