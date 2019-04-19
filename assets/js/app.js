@@ -58,7 +58,7 @@ database.ref().on("child_added", function (childSnapshot) {
     // calculate the next train time in UTC.
     let nextTrain = moment().add(tMinutesTilTrain, "minutes");
     // This is to convert the next Train time to local time w/o seconds. 
-    let newTime = nextTrain.format('LT') + ' PDT';
+    let newTime = nextTrain.format('LT');
 
     // change HTML
     let tRow = $("<tr>").append(
