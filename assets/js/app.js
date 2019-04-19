@@ -56,13 +56,14 @@ database.ref().on("child_added", function (childSnapshot) {
     let tMinutesTilTrain = trainFreq - tRemainder;
 
     let nextTrain = moment().add(tMinutesTilTrain, "minutes");
+    let newTime = nextTrain.format('LT') + ' PDT';
 
     // change HTML
     let tRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(trainDest),
         $("<td>").text(trainFreq),
-        $("<td>").text(nextTrain),
+        $("<td>").text(newTime),
         $("<td>").text(tMinutesTilTrain)
     )
     $("#train-table > tbody").append(tRow);
